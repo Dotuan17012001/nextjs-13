@@ -6,6 +6,7 @@ import { useState } from "react";
 import UpdateModal from "./update.modal";
 import ViewModal from "./view.modal";
 import DeleteModal from "./delete.modal";
+import Link from "next/link";
 interface IProps {
   blogs: IBlog[];
 }
@@ -43,7 +44,7 @@ const TableApp = (props: IProps) => {
     <>
       <div
         style={{ display: "flex", justifyContent: "space-between" }}
-        className="mb-3"
+        className="mb-3 mt-5"
       >
         <h3>Table Blogs</h3>
         <Button variant="success" onClick={() => setShowModal(true)}>
@@ -69,6 +70,9 @@ const TableApp = (props: IProps) => {
 
                 <td style={{ display: "flex", gap: "15px" }}>
                   <Button variant="info" onClick={() => handleView(blog)}>View</Button>
+                
+                      <Link href={`/blogs/${blog.id}`} className="btn btn-primary">View-New-Page</Link>
+                  
                   <Button variant="warning" onClick={() => handleUpdate(blog)}>Edit</Button>
                   <Button variant="danger" onClick={()=>handleDelete(blog)}>Delete</Button>
                 </td>
